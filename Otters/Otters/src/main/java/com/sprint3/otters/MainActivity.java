@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,16 +21,16 @@ public class MainActivity extends Activity {
                 * Creating some sample test data to see what the layout looks like.
                 * You should eventually delete this.
                 */
-        TitleFeedItem item1 = new TitleFeedItem("SMALL", "small");
-        TitleFeedItem item2 = new TitleFeedItem("MEDIUM", "medium");
-        TitleFeedItem item3 = new TitleFeedItem("BIG", "big");
-        final List<TitleFeedItem> sampleData = new ArrayList<TitleFeedItem>();
+        TaskSizeItem item1 = new TaskSizeItem("SMALL", "small");
+        TaskSizeItem item2 = new TaskSizeItem("MEDIUM", "medium");
+        TaskSizeItem item3 = new TaskSizeItem("BIG", "big");
+        final List<TaskSizeItem> sampleData = new ArrayList<TaskSizeItem>();
         sampleData.add(item1);
         sampleData.add(item2);
         sampleData.add(item3);
 
         // Set up the ArrayAdapter for the feedList
-        TitleFeedListAdapter feedListAdapter = new TitleFeedListAdapter(this.getApplicationContext(), sampleData);
+        TaskSizeListAdapter feedListAdapter = new TaskSizeListAdapter(this.getApplicationContext(), sampleData);
         ListView feedList = (ListView) findViewById(R.id.titles);
         feedList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
