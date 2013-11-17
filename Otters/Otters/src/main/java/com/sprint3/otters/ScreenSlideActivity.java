@@ -66,7 +66,6 @@ public class ScreenSlideActivity extends FragmentActivity {
             }
         });
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -83,6 +82,7 @@ public class ScreenSlideActivity extends FragmentActivity {
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
