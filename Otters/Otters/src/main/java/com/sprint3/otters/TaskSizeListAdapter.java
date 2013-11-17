@@ -13,19 +13,19 @@ import java.util.List;
 /**
  * Created by evan on 9/25/13.
  */
-public class TitleFeedListAdapter extends ArrayAdapter<TitleFeedItem> {
+public class TaskSizeListAdapter extends ArrayAdapter<TaskSizeItem> {
 
     private final Context context;
-    private final List<TitleFeedItem> data;
+    private final List<TaskSizeItem> data;
 
-    public TitleFeedListAdapter(Context context, List<TitleFeedItem> data){
+    public TaskSizeListAdapter(Context context, List<TaskSizeItem> data){
         super(context, R.layout.smb_item, data);
         this.context = context;
         this.data = data;
     }
 
     private class FeedItemHolder{
-        TextView userName;
+        TextView name;
     }
 
     @Override
@@ -37,16 +37,16 @@ public class TitleFeedListAdapter extends ArrayAdapter<TitleFeedItem> {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             feedRow = inflater.inflate(R.layout.smb_item, parent, false);
             holder = new FeedItemHolder();
-            holder.userName = (TextView) feedRow.findViewById(R.id.category);
+            holder.name = (TextView) feedRow.findViewById(R.id.category);
 
             feedRow.setTag(holder);
         } else {
             holder = (FeedItemHolder) feedRow.getTag();
         }
 
-        TitleFeedItem item = data.get(position);
+        TaskSizeItem item = data.get(position);
 
-        holder.userName.setText(item.userName);
+        holder.name.setText(item.name);
 
         return feedRow;
     }
