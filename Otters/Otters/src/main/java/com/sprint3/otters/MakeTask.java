@@ -55,7 +55,7 @@ public class MakeTask extends Activity{
                 Date date = new Date();
 
                 Task task = new Task(myName, myDescript,size,priority,reoccuring,date.toString());
-
+                task.setId("");
                 db.addTask(task);
 
                 Toast.makeText(getApplicationContext(), "The fumes make it happen", Toast.LENGTH_SHORT).show();

@@ -32,6 +32,17 @@ public class MainActivity extends Activity {
         // Set up the ArrayAdapter for the feedList
         TaskSizeListAdapter feedListAdapter = new TaskSizeListAdapter(this.getApplicationContext(), sampleData);
         ListView feedList = (ListView) findViewById(R.id.titles);
+
+        feedList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> arg0, View arg1,
+                                       int pos, long id) {
+
+                Intent i = new Intent(getApplicationContext(), ScreenSlideActivity.class); // creates a new intent i, which is how Android passes information between activities, and defines this intent as a way to navigate to the SecondActivity
+                i.putExtra("size", sampleData.get(pos).size);
+                startActivity(i); // tells Android to make the intent active
+            };
+        });
+
         feedList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,

@@ -27,13 +27,14 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 public class ScreenSlideActivity extends FragmentActivity {
-    /**
-     * The number of pages (wizard steps) to show in this demo.
-     */
-    private static final int NUM_PAGES = 5;
+
+    private static int NUM_PAGES;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -50,6 +51,25 @@ public class ScreenSlideActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_slide);
+
+        Bundle extras = getIntent().getExtras();
+        final String size;
+        if (extras != null) {
+            size = extras.getString("size");
+        } else {
+            size = "small";
+        }
+
+        DBHandler db = new DBHandler(this);
+        db.open();
+        ArrayList<Task> tasks = db.getTasksBySize(size);
+
+        Toast.makeText(getApplicationContext(), String.valueOf(tasks.size()), Toast.LENGTH_SHORT).show();
+        /**
+         * The number of pages (wizard steps) to show in this demo.
+         */
+        final int NUM_PAGES = tasks.size();
+
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);

@@ -25,14 +25,13 @@ public class DatabaseModel extends SQLiteOpenHelper {
     // DatabaseModel creation sql statement
     private static final String DATABASE_CREATE = "create table "
             + TABLE_NAME + "("
-            + "_id" + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + TASK_NAME + " TEXT NOT NULL, "
             + TASK_DESCRIPTION + " TEXT NOT NULL, "
             + TASK_SIZE + " TEXT NOT NULL, "
             + TASK_PRIORITY + " INTEGER NOT NULL, "
             + TASK_REOCCURING + " INTEGER NOT NULL, "
             + TASK_DATE + " TEXT NOT NULL, "
-            + TASK_ID + " TEXT NOT NULL);";
+            + TASK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT);";
 
     //Default Constructor
     public DatabaseModel(Context context){

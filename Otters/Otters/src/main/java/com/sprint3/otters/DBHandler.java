@@ -77,7 +77,6 @@ public class DBHandler {
         values.put(DatabaseModel.TASK_PRIORITY, newTask.priority);
         values.put(DatabaseModel.TASK_REOCCURING, newTask.reoccuring);
         values.put(DatabaseModel.TASK_DATE, newTask.date);
-        values.put(DatabaseModel.TASK_ID, newTask.id);
 
         //Inserting into database
         this.database.insert(DatabaseModel.TABLE_NAME, null, values);
