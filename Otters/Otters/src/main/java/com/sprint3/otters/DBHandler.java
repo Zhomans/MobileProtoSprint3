@@ -41,7 +41,7 @@ public class DBHandler {
     }
 
     //Update a post
-    public void updatePost(Task task){
+    public void updateTask(Task task){
         deleteTaskById(task.id);
         addTask(task);
     }
