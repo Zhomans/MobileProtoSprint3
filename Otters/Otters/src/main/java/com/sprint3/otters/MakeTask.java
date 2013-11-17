@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Toast;
+
+import java.util.Date;
 
 /**
  * Created by amclaughlin on 11/14/13.
@@ -21,9 +24,18 @@ public class MakeTask extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_task);
 
+        Bundle extras = getIntent().getExtras();
+        final String size;
+        if (extras != null) {
+            size = extras.getString("size");
+        } else {
+            size = "small";
+        }
+
         final EditText name = (EditText) findViewById(R.id.name);
         final EditText descript = (EditText) findViewById(R.id.description);
         final SeekBar prior = (SeekBar) findViewById(R.id.priority);
+        final CheckBox reoccur = (CheckBox) findViewById(R.id.checkBox);
 
         db = new DBHandler(this);
         db.open();
@@ -37,10 +49,12 @@ public class MakeTask extends Activity{
             public void onClick(View view) { // creates the onClick method for the listener, which controls what is done when the button is clicked
                 String myName = name.getText().toString();
                 String myDescript = descript.getText().toString();
+                int reoccuring = reoccur.isChecked()? 1 : 0;
 
-                Task task = new Task(myName, myDescript,"small",93,1,"10/10/2010");
-                int value = prior.getProgress();
-                Toast.makeText(getApplicationContext(), String.valueOf(value), Toast.LENGTH_SHORT).show();
+                int priority = prior.getProgress();
+                Date date = new Date();
+
+                Task task = new Task(myName, myDescript,size,priority,reoccuring,date.toString());
 
                 db.addTask(task);
 

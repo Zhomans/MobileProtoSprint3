@@ -6,9 +6,11 @@ package com.sprint3.otters;
 public class TitleFeedItem {
 
     public String userName;
+    public String size;
 
-    public TitleFeedItem(String userName){
+    public TitleFeedItem(String userName, String size){
         this.userName = userName;
+        this.size = size;
     }
 
 }
