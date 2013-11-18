@@ -38,7 +38,7 @@ public class MakeTask extends Activity{
         final SeekBar prior = (SeekBar) findViewById(R.id.priority);
         final CheckBox reoccur = (CheckBox) findViewById(R.id.checkBox);
 
-        add.setText(size);
+        add.setText("Add " + size);
 
         db = new DBHandler(this);
         db.open();
