@@ -1,9 +1,13 @@
 package com.sprint3.otters;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 
@@ -54,8 +58,25 @@ public class ViewPagerActivity extends FragmentActivity {
             public void onPageSelected(int position) {}
 
         });
-
     }
+
+//        @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        super.onCreateOptionsMenu(menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case android.R.id.home:
+//                // Navigate "up" the demo structure to the launchpad activity.
+//                // See http://developer.android.com/design/patterns/navigation.html for more.
+//                NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     public ArrayList<Task> getTasks() {
         return this.tasks;

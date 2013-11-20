@@ -61,9 +61,8 @@ public class MakeTask extends Activity{
                 task.setId("");
                 db.addTask(task);
 
-//                ArrayList<Task> tasks = db.getTasksBySize("small");
 
-                Intent i = new Intent(getApplicationContext(), Bing.class); // creates a new intent i, which is how Android passes information between activities, and defines this intent as a way to navigate to the SecondActivity
+                Intent i = new Intent(getApplicationContext(), MainActivity.class); // creates a new intent i, which is how Android passes information between activities, and defines this intent as a way to navigate to the SecondActivity
                 startActivity(i); // tells Android to make the intent active
             }
         });
