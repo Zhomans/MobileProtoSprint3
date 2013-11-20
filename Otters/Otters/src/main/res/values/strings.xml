@@ -12,5 +12,7 @@
         Ipsum</string>
     <string name="title_screen_slide">Screen Slide</string>
     <string name="action_finish">Finish</string>
+    <string name="deleteDesc">Delete file</string>
+    <string name="activityName">ActivityType</string>
 
 </resources>

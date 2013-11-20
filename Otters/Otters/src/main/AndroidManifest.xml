@@ -29,9 +29,24 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name=".TaskDetailActivity"
+            android:label="TaskDetail"
+            android:parentActivityName=".MainActivity"
+            android:uiOptions="splitActionBarWhenNarrow">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
         <activity
-            android:name="com.sprint3.otters.MakeTask"
-            android:label="@string/app_name" >
+            android:name=".MakeTask"
+            android:label="MakeTaskActivity" >
+        </activity>
+        <activity
+            android:name=".Bing"
+            android:label="The Searcher" >
+        </activity>
+        <activity
+            android:name=".ListActivity"
+            android:label="Show thing in list!" >
         </activity>
     </application>
 
