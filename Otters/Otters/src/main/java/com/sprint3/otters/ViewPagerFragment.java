@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by zach on 11/20/13.
@@ -39,8 +43,15 @@ public class ViewPagerFragment extends Fragment {
                     task.name);
             ((TextView) root.findViewById(R.id.TaskDescription)).setText(
                     task.description);
-            ((TextView) root.findViewById(R.id.TaskDate)).setText(
-                    "Date Added: " + task.date);
+            try{
+                Date date = new SimpleDateFormat("E MMM dd HH:mm:ss z yyyy").parse(task.date);
+                String formattedDate = new SimpleDateFormat("MM/dd/yyyy").format(date);
+                ((TextView) root.findViewById(R.id.TaskDate)).setText(
+                        "Date Added: " + formattedDate);
+            } catch (ParseException e){
+                Log.e("Parse Exception", e.toString());
+            }
+
 
             final DBHandler db = new DBHandler(this.getActivity());
             db.open();
