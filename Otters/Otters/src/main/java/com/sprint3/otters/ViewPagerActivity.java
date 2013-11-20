@@ -83,9 +83,18 @@ public class ViewPagerActivity extends FragmentActivity {
             case R.id.action_list:
                 Intent i = new Intent(getApplicationContext(), ListActivity.class);
                 i.putExtra("size", size);
-                startActivity(i);
+                startActivityForResult(i,1);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK){
+                int startPage = data.getExtras().getInt("start");
+                _mViewPager.setCurrentItem(startPage);
+            }
+        }
     }
 
     public ArrayList<Task> getTasks() {

@@ -61,7 +61,8 @@ public class ListActivity extends Activity {
                 Intent in = new Intent(getApplicationContext(), ViewPagerActivity.class);
                 in.putExtra("size", size);
                 in.putExtra("start",i);
-                startActivity(in);
+                setResult(RESULT_OK,in);
+                finish();
             }
         });
     }
@@ -84,7 +85,8 @@ public class ListActivity extends Activity {
                 Intent i = new Intent(getApplicationContext(), ViewPagerActivity.class);
                 i.putExtra("size", size);
                 i.putExtra("start", 0);
-                startActivity(i);
+                setResult(RESULT_OK,i);
+                finish();
         }
         return super.onOptionsItemSelected(item);
     }
