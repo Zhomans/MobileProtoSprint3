@@ -21,9 +21,9 @@ public class MainActivity extends Activity {
                 * Creating some sample test data to see what the layout looks like.
                 * You should eventually delete this.
                 */
-        TaskSizeItem item1 = new TaskSizeItem("SMALL", "small");
-        TaskSizeItem item2 = new TaskSizeItem("MEDIUM", "medium");
-        TaskSizeItem item3 = new TaskSizeItem("BIG", "big");
+        TaskSizeItem item1 = new TaskSizeItem("SMALL", "Small");
+        TaskSizeItem item2 = new TaskSizeItem("MEDIUM", "Medium");
+        TaskSizeItem item3 = new TaskSizeItem("BIG", "Big");
         final List<TaskSizeItem> sampleData = new ArrayList<TaskSizeItem>();
         sampleData.add(item1);
         sampleData.add(item2);

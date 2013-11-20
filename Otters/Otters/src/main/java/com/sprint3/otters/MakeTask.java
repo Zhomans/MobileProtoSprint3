@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import java.util.Date;
 
@@ -29,13 +29,16 @@ public class MakeTask extends Activity{
         if (extras != null) {
             size = extras.getString("size");
         } else {
-            size = "small";
+            size = "Small";
         }
 
+        final TextView add = (TextView) findViewById(R.id.add);
         final EditText name = (EditText) findViewById(R.id.name);
         final EditText descript = (EditText) findViewById(R.id.description);
         final SeekBar prior = (SeekBar) findViewById(R.id.priority);
         final CheckBox reoccur = (CheckBox) findViewById(R.id.checkBox);
+
+        add.setText("Add " + size);
 
         db = new DBHandler(this);
         db.open();
@@ -58,10 +61,9 @@ public class MakeTask extends Activity{
                 task.setId("");
                 db.addTask(task);
 
-                Toast.makeText(getApplicationContext(), "The fumes make it happen", Toast.LENGTH_SHORT).show();
 //                ArrayList<Task> tasks = db.getTasksBySize("small");
 
-                Intent i = new Intent(getApplicationContext(), MainActivity.class); // creates a new intent i, which is how Android passes information between activities, and defines this intent as a way to navigate to the SecondActivity
+                Intent i = new Intent(getApplicationContext(), Bing.class); // creates a new intent i, which is how Android passes information between activities, and defines this intent as a way to navigate to the SecondActivity
                 startActivity(i); // tells Android to make the intent active
             }
         });
