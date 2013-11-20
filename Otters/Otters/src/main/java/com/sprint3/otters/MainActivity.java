@@ -37,7 +37,7 @@ public class MainActivity extends Activity {
             public void onItemClick(AdapterView<?> arg0, View arg1,
                                        int pos, long id) {
 
-                Intent i = new Intent(getApplicationContext(), ScreenSlideActivity.class); // creates a new intent i, which is how Android passes information between activities, and defines this intent as a way to navigate to the SecondActivity
+                Intent i = new Intent(getApplicationContext(), ViewPagerActivity.class); // creates a new intent i, which is how Android passes information between activities, and defines this intent as a way to navigate to the SecondActivity
                 i.putExtra("size", sampleData.get(pos).size);
                 startActivity(i); // tells Android to make the intent active
             };

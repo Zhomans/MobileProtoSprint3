@@ -4,8 +4,6 @@ package com.sprint3.otters;
 import android.app.Activity;
 import android.os.Bundle;
 
-import org.apache.commons.codec.binary.Base64;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -29,7 +27,7 @@ public class Bing extends Activity {
             searchText = searchText.replaceAll(" ", "%20");
             String accountKey="NZ1XeynVzaFcm1BXZiwlb5tgmve7OOPcYE8Y3I9zzWs";
 
-            byte[] accountKeyBytes = Base64.encodeBase64((accountKey + ":" + accountKey).getBytes());
+            byte[] accountKeyBytes = ((accountKey + ":" + accountKey).getBytes());
             String accountKeyEnc = new String(accountKeyBytes);
             URL url;
             try {
