@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,12 +16,12 @@ import java.util.List;
  */
 public class TaskListAdapter extends ArrayAdapter{
 
-    private List<String> data;
+    private ArrayList<Task> tasks;
     private Activity activity;
 
-    public TaskListAdapter(Activity a, int viewResourceId, List<String> data){
-        super(a, viewResourceId, data);
-        this.data = data;
+    public TaskListAdapter(Activity a, int viewResourceId, ArrayList<Task> tasks){
+        super(a, viewResourceId, tasks);
+        this.tasks = tasks;
         this.activity = a;
     }
 
@@ -31,20 +32,8 @@ public class TaskListAdapter extends ArrayAdapter{
             LayoutInflater vi = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = vi.inflate(R.layout.task_list_item, null);
         }
-
-        ImageButton del = (ImageButton) v.findViewById(R.id.deleteButton);
-        final TextView name = (TextView) v.findViewById(R.id.titleTextView);
-        name.setText(data.get(position));
-
-        del.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String fileName = name.getText().toString();
-                activity.deleteFile(fileName);
-                data.remove(position);
-                TaskListAdapter.this.notifyDataSetChanged();
-            }
-        });
+        TextView taskName = (TextView) v.findViewById(R.id.taskName);
+        taskName.setText(tasks.get(position).name);
 
         return v;
     }

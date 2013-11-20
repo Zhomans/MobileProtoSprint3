@@ -1,5 +1,6 @@
 package com.sprint3.otters;
 
+import android.app.*;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -8,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -21,17 +23,20 @@ public class ViewPagerActivity extends FragmentActivity {
     private ViewPagerAdapter _adapter;
     public ArrayList<Task> tasks;
     private static int NUM_PAGES;
+    public String size;
+    public int startPage;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Bundle extras = getIntent().getExtras();
-        final String size;
         if (extras != null) {
             size = extras.getString("size");
+            startPage = extras.getInt("start");
         } else {
             size = "small";
+            startPage = 0;
         }
 
         DBHandler db = new DBHandler(this);
@@ -43,7 +48,7 @@ public class ViewPagerActivity extends FragmentActivity {
         _mViewPager = (ViewPager) findViewById(R.id.viewPager);
         _adapter = new ViewPagerAdapter(getApplicationContext(),getSupportFragmentManager(), NUM_PAGES);
         _mViewPager.setAdapter(_adapter);
-        _mViewPager.setCurrentItem(0);
+        _mViewPager.setCurrentItem(startPage);
         setTab();
     }
 
@@ -60,23 +65,28 @@ public class ViewPagerActivity extends FragmentActivity {
         });
     }
 
-//        @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        super.onCreateOptionsMenu(menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                // Navigate "up" the demo structure to the launchpad activity.
-//                // See http://developer.android.com/design/patterns/navigation.html for more.
-//                NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
-//                return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
+        @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.activity_screen_slide, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // Navigate "up" the demo structure to the launchpad activity.
+                // See http://developer.android.com/design/patterns/navigation.html for more.
+                NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
+                return true;
+            case R.id.action_list:
+                Intent i = new Intent(getApplicationContext(), ListActivity.class);
+                i.putExtra("size", size);
+                startActivity(i);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     public ArrayList<Task> getTasks() {
         return this.tasks;

@@ -39,6 +39,7 @@ public class MainActivity extends Activity {
 
                 Intent i = new Intent(getApplicationContext(), ViewPagerActivity.class); // creates a new intent i, which is how Android passes information between activities, and defines this intent as a way to navigate to the SecondActivity
                 i.putExtra("size", sampleData.get(pos).size);
+                i.putExtra("start", 0);
                 startActivity(i); // tells Android to make the intent active
             };
         });

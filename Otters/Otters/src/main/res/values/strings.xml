@@ -14,5 +14,7 @@
     <string name="action_finish">Finish</string>
     <string name="deleteDesc">Delete file</string>
     <string name="activityName">ActivityType</string>
+    <string name="list">List</string>
+    <string name="detail">Details</string>
 
 </resources>

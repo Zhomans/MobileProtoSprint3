@@ -10,18 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/titleTextView"
+        android:id="@+id/taskName"
         android:clickable="false"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:gravity="center_vertical" />
+        android:gravity="center_vertical"
+        android:text="Task Name"/>
 
-    <ImageButton
-        android:contentDescription="@string/deleteDesc"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:id="@+id/deleteButton"
-        android:layout_alignParentTop="true"
-        android:background="@drawable/delete"
-        android:layout_alignParentRight="true" />
+
 </RelativeLayout>
