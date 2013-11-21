@@ -69,7 +69,18 @@ public class ViewPagerActivity extends FragmentActivity {
         @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.activity_screen_slide, menu);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            size = extras.getString("size");
+            startPage = extras.getInt("start");
+        } else {
+            size = "small";
+            startPage = 0;
+        }
+        DBHandler db = new DBHandler(this);
+        db.open();
+        int num_page = db.getTasksBySize(size).size();
+        if (num_page != 0){ getMenuInflater().inflate(R.menu.activity_screen_slide, menu); }
         return true;
     }
 
@@ -82,11 +93,12 @@ public class ViewPagerActivity extends FragmentActivity {
                 NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
                 return true;
             case R.id.action_list:
-                Intent i = new Intent(getApplicationContext(), ListActivity.class);
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 i.putExtra("size", size);
-                startActivityForResult(i, 1);
+                setResult(5, i);
+                finish();
+                return true;
             case R.id.action_random:
-
                 DBHandler db = new DBHandler(this);
                 db.open();
                 int MAX = db.getTasksBySize(size).size();
@@ -97,18 +109,25 @@ public class ViewPagerActivity extends FragmentActivity {
                 }
                 _mViewPager.setCurrentItem(randomInt);
                 return true;
+            case R.id.action_delete:
+                DBHandler db_del = new DBHandler(this);
+                db_del.open();
+                int currPage = _mViewPager.getCurrentItem();
+                db_del.deleteTaskById(tasks.get(currPage).id);
+                NUM_PAGES -= 1;
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("size", size);
+                if (currPage != 0) {
+                    intent.putExtra("start", currPage-1);
+                } else {
+                    intent.putExtra("start", 0);
+                }
+                setResult(4,intent);
+                finish();
+                return true;
 
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1) {
-            if(resultCode == RESULT_OK){
-                int startPage = data.getExtras().getInt("start");
-                _mViewPager.setCurrentItem(startPage);
-            }
-        }
     }
 
     public ArrayList<Task> getTasks() {

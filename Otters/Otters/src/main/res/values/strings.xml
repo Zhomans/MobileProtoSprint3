@@ -17,5 +17,7 @@
     <string name="list">List</string>
     <string name="detail">Details</string>
     <string name="random">Random</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 
 </resources>

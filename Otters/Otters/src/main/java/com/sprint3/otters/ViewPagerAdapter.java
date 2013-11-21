@@ -28,4 +28,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
         return NUM_PAGES;
     }
 
+    public void setCount(int newCount) {NUM_PAGES = newCount;}
+
 }

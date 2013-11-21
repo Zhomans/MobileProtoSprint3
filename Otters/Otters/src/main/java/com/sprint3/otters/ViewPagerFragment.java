@@ -1,5 +1,6 @@
 package com.sprint3.otters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -69,8 +70,11 @@ public class ViewPagerFragment extends Fragment {
                         Toast.makeText(getActivity(), "Accepted recurring task: " + task.name, Toast.LENGTH_SHORT).show();
                     }
 
-                    Intent i = new Intent(getActivity().getApplicationContext(), MainActivity.class);
-                    startActivity(i);
+                    Activity activity = getActivity();
+                    Intent i = new Intent(activity.getApplicationContext(), MainActivity.class);
+                    activity.setResult(activity.RESULT_OK, i);
+                    activity.finish();
+
             };
             });
 
@@ -78,12 +82,14 @@ public class ViewPagerFragment extends Fragment {
             firstStep.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    String url = "http://google.com/#q="+tasks.get(position).name.replace(' ', '+');
+                    String url = "http://google.com/#q=" + tasks.get(position).name.replace(' ', '+');
                     Uri uriUrl = Uri.parse(url);
                     Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
                     startActivity(launchBrowser);
 
-                };
+                }
+
+                ;
             });
 
 
@@ -94,5 +100,7 @@ public class ViewPagerFragment extends Fragment {
 
         return root;
     }
+
+
 
 }

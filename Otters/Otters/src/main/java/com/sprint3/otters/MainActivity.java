@@ -3,6 +3,7 @@ package com.sprint3.otters;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -40,7 +41,7 @@ public class MainActivity extends Activity {
                 Intent i = new Intent(getApplicationContext(), ViewPagerActivity.class); // creates a new intent i, which is how Android passes information between activities, and defines this intent as a way to navigate to the SecondActivity
                 i.putExtra("size", sampleData.get(pos).size);
                 i.putExtra("start", 0);
-                startActivity(i); // tells Android to make the intent active
+                startActivityForResult(i, 1); // tells Android to make the intent active
             };
         });
 
@@ -57,6 +58,34 @@ public class MainActivity extends Activity {
             }
         });
         feedList.setAdapter(feedListAdapter);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK){}
+            if(resultCode == 4){
+
+                String size = data.getExtras().getString("size");
+                int startPage = data.getExtras().getInt("start");
+                Intent i = new Intent(getApplicationContext(), ViewPagerActivity.class); // creates a new intent i, which is how Android passes information between activities, and defines this intent as a way to navigate to the SecondActivity
+                i.putExtra("size", size);
+                i.putExtra("start", startPage);
+                startActivityForResult(i, 1); // tells Android to make the intent active
+
+            }
+            if (resultCode == 5){
+                String size = data.getExtras().getString("size");
+                Intent i = new Intent(getApplicationContext(), ListActivity.class);
+                i.putExtra("size", size);
+                startActivityForResult(i, 1);
+            }
+
+            //XXX:This isn't perfect. If you back from List, you go back to the MainActivity.
+
+            if (resultCode == RESULT_CANCELED) {
+
+            }
+        }
     }
 }
     

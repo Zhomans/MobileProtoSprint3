@@ -58,10 +58,10 @@ public class ListActivity extends Activity {
         taskList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent in = new Intent(getApplicationContext(), ViewPagerActivity.class);
+                Intent in = new Intent(getApplicationContext(), MainActivity.class);
                 in.putExtra("size", size);
                 in.putExtra("start",i);
-                setResult(RESULT_OK,in);
+                setResult(4,in);
                 finish();
             }
         });
@@ -82,10 +82,10 @@ public class ListActivity extends Activity {
                 NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
                 return true;
             case R.id.action_detail:
-                Intent i = new Intent(getApplicationContext(), ViewPagerActivity.class);
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 i.putExtra("size", size);
                 i.putExtra("start", 0);
-                setResult(RESULT_OK,i);
+                setResult(4,i);
                 finish();
         }
         return super.onOptionsItemSelected(item);
