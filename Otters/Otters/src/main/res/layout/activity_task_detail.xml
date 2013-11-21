@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/noteTitle"
+        android:textColor="@color/d_gray"
         android:layout_gravity="center_horizontal"
         android:padding="8dp" />
 
@@ -19,5 +20,6 @@
         android:id="@+id/noteText"
         android:layout_marginLeft="50dp"
         android:layout_gravity="left|center_vertical"
+        android:textColor="@color/d_gray"
         android:padding="8dp" />
 </LinearLayout>

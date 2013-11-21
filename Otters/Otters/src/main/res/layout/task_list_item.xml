@@ -11,6 +11,7 @@
         android:layout_height="48dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:id="@+id/taskName"
+        android:textColor="@color/d_gray"
         android:clickable="false"
         android:layout_alignParentTop="true"
         android:gravity="center_vertical"

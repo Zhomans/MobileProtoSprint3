@@ -13,6 +13,7 @@
             android:id="@+id/TaskTitle"
             android:textStyle="bold"
             android:text="Task Title"
+            android:textColor="@color/d_gray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -23,12 +24,14 @@
             android:lineSpacingMultiplier="1.2"
             android:layout_marginLeft="55dp"
             android:layout_width="match_parent"
+            android:textColor="@color/d_gray"
             android:layout_height="wrap_content"
             android:layout_below="@id/TaskTitle"
             android:text="More information about the item." />
 
         <TextView style="?android:textAppearanceMedium"
             android:id="@+id/TaskDate"
+            android:textColor="@color/d_gray"
             android:lineSpacingMultiplier="1.2"
             android:layout_marginLeft="55dp"
             android:layout_marginBottom="125dp"
@@ -53,6 +56,7 @@
 
         <Button
             android:id="@+id/acceptButton"
+            android:textColor="@color/d_gray"
             android:layout_width="0.0dip" android:layout_height="fill_parent"
             android:text="Accept"
             android:layout_weight="1.0" />
@@ -61,6 +65,7 @@
             android:id="@+id/firstStep"
             android:layout_width="0.0dip" android:layout_height="fill_parent"
             android:text="First Steps"
+            android:textColor="@color/d_gray"
             android:layout_weight="1.0" />
 
     </LinearLayout>
