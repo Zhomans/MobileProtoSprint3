@@ -90,7 +90,11 @@ public class ViewPagerActivity extends FragmentActivity {
                 DBHandler db = new DBHandler(this);
                 db.open();
                 int MAX = db.getTasksBySize(size).size();
-                int randomInt = (int)(Math.random() * (MAX + 1));
+                int currentPage = _mViewPager.getCurrentItem();
+                int randomInt = (int)(Math.random() * MAX);
+                while (randomInt == currentPage){
+                    randomInt = (int)(Math.random() * MAX);
+                }
                 _mViewPager.setCurrentItem(randomInt);
                 return true;
 
