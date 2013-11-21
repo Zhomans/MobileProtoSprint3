@@ -3,6 +3,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.app.Activity;
 import android.support.v4.app.NavUtils;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -34,6 +36,7 @@ public class ListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
 
+
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
@@ -43,13 +46,15 @@ public class ListActivity extends Activity {
         }
 
         final TextView title = (TextView) findViewById(R.id.typeTextView);
-        title.setText(size);
+        overrideFonts(this, title);
+        title.setText(size+" Tasks");
 
         DBHandler db = new DBHandler(this);
         db.open();
         ArrayList<Task> tasks = db.getTasksBySize(size);
 
         ListView taskList = (ListView) findViewById(R.id.taskList);
+        overrideFonts(this, taskList);
 
         TaskListAdapter taskListAdapter = new TaskListAdapter(this, R.layout.task_list_item, tasks);
 
@@ -89,5 +94,28 @@ public class ListActivity extends Activity {
                 finish();
         }
         return super.onOptionsItemSelected(item);
+    }
+    private void overrideFonts(final Context context, final View v) {
+
+        try {
+
+            if (v instanceof ViewGroup) {
+
+                ViewGroup vg = (ViewGroup) v;
+
+                for (int i = 0; i < vg.getChildCount(); i++) {
+
+                    View child = vg.getChildAt(i);
+
+                    overrideFonts(context, child);
+
+                }
+            } else if (v instanceof TextView ) {
+
+                ((TextView) v).setTypeface(Typeface.createFromAsset(context.getAssets(), "fonts/Vegur-R 0.602.otf"));
+
+            }
+        } catch (Exception e) {
+        }
     }
 }
