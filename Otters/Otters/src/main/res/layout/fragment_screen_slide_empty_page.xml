@@ -17,8 +17,7 @@
             android:textStyle="bold"
             android:layout_marginBottom="16dp"
             android:layout_marginLeft="55dp"
-            android:textColor="@color/d_gray"
-            android:textAlignment="center"/>
+            android:textColor="@color/d_gray"/>
 
     <TextView
         android:layout_width="fill_parent"
