@@ -23,23 +23,19 @@
             </intent-filter>
         </activity>
         <activity android:name=".TaskDetailActivity"
-            android:label="TaskDetail"
             android:parentActivityName=".MainActivity"
             android:uiOptions="splitActionBarWhenNarrow">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity
-            android:name=".MakeTask"
-            android:label="MakeTaskActivity" >
+            android:name=".MakeTask" >
         </activity>
         <activity
-            android:name=".Bing"
-            android:label="The Searcher" >
+            android:name=".Bing" >
         </activity>
         <activity
-            android:name=".ListActivity"
-            android:label="Show thing in list!" >
+            android:name=".ListActivity" >
         </activity>
         <activity
             android:name="com.sprint3.otters.ViewPagerActivity"
