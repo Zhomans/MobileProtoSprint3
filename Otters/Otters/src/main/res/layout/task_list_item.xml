@@ -13,8 +13,8 @@
         android:id="@+id/taskName"
         android:clickable="false"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
         android:gravity="center_vertical"
+        android:layout_marginLeft="55dp"
         android:text="Task Name"/>
 
 

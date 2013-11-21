@@ -5,6 +5,7 @@
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingTop="8dp"
+    android:background="@drawable/notebookpaper"
     android:paddingBottom="8dp">
 
     <TextView
@@ -12,10 +13,13 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
+        android:textSize="32sp"
+        android:layout_centerHorizontal="true"
         android:id="@+id/typeTextView"
         android:paddingBottom="8dp"/>
 
     <ListView
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/taskList"

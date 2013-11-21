@@ -2,6 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/notebookpaper"
     android:layout_height="match_parent">
 
     <TextView
@@ -9,13 +10,14 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/noteTitle"
-        android:layout_gravity="left|center_vertical"
+        android:layout_gravity="center_horizontal"
         android:padding="8dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/noteText"
+        android:layout_marginLeft="50dp"
         android:layout_gravity="left|center_vertical"
         android:padding="8dp" />
 </LinearLayout>

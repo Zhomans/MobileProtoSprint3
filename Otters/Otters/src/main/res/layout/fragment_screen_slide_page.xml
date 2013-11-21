@@ -5,21 +5,23 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:id="@+id/content"
+        android:background="@drawable/notebookpaper"
         android:padding="16dp">
 
         <TextView
-            style="?android:textAppearanceLarge"
+            android:textSize="32sp"
             android:id="@+id/TaskTitle"
             android:textStyle="bold"
             android:text="Task Title"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:textAlignment="center"/>
+            android:layout_centerHorizontal="true"/>
 
         <TextView style="?android:textAppearanceMedium"
             android:id="@+id/TaskDescription"
             android:lineSpacingMultiplier="1.2"
+            android:layout_marginLeft="55dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/TaskTitle"
@@ -28,9 +30,12 @@
         <TextView style="?android:textAppearanceMedium"
             android:id="@+id/TaskDate"
             android:lineSpacingMultiplier="1.2"
+            android:layout_marginLeft="55dp"
+            android:layout_marginBottom="125dp"
+            android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/TaskDescription"
+
             android:text="Date" />
 
 
