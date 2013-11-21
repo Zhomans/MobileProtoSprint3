@@ -2,6 +2,7 @@ package com.sprint3.otters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -70,6 +71,18 @@ public class ViewPagerFragment extends Fragment {
 
                     Intent i = new Intent(getActivity().getApplicationContext(), MainActivity.class);
                     startActivity(i);
+            };
+            });
+
+            Button firstStep = (Button) root.findViewById(R.id.firstStep);
+            firstStep.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String url = "http://google.com/#q="+tasks.get(position).name.replace(' ', '+');
+                    Uri uriUrl = Uri.parse(url);
+                    Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+                    startActivity(launchBrowser);
+
                 };
             });
 

@@ -1,6 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Go to list view -->
+    <item android:id="@+id/action_random"
+        android:title="@string/random"
+        android:showAsAction="ifRoom|withText" />
+
     <item android:id="@+id/action_list"
         android:title="@string/list"
         android:showAsAction="ifRoom|withText" />

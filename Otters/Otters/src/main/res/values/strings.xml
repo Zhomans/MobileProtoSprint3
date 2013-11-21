@@ -16,5 +16,6 @@
     <string name="activityName">ActivityType</string>
     <string name="list">List</string>
     <string name="detail">Details</string>
+    <string name="random">Random</string>
 
 </resources>

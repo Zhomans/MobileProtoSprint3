@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -83,7 +84,16 @@ public class ViewPagerActivity extends FragmentActivity {
             case R.id.action_list:
                 Intent i = new Intent(getApplicationContext(), ListActivity.class);
                 i.putExtra("size", size);
-                startActivityForResult(i,1);
+                startActivityForResult(i, 1);
+            case R.id.action_random:
+
+                DBHandler db = new DBHandler(this);
+                db.open();
+                int MAX = db.getTasksBySize(size).size();
+                int randomInt = (int)(Math.random() * (MAX + 1));
+                _mViewPager.setCurrentItem(randomInt);
+                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
