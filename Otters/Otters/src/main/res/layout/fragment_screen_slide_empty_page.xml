@@ -11,11 +11,15 @@
         <TextView
             style="?android:textAppearanceLarge"
             android:id="@+id/TaskTitle"
-            android:textStyle="bold"
-            android:text="No Tasks of This Size Found. Please Insert Tasks."
-            android:layout_width="match_parent"
+            android:text="No Tasks of this Size Found! Please Insert Tasks."
+            android:layout_width="wrap_content"
+            android:textColor="@color/d_gray"
             android:layout_height="wrap_content"
+            android:layout_marginRight="55dp"
+            android:layout_marginLeft="55dp"
             android:layout_marginBottom="16dp"
+            android:layout_centerVertical="true"
+            android:textSize="32sp"
             android:textAlignment="center"/>
 
     </RelativeLayout>
